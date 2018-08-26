@@ -184,7 +184,7 @@ app.getPlayerStats = (season) => {
     }
   })
 }
-
+ 
 app.displayGoalieStats = (player) => {
   app.addHideClass('.roster-list');
   
