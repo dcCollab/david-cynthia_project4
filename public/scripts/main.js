@@ -260,7 +260,7 @@ app.accordion = function () {
     heightStyle: "content"
   });
 };
- 
+
 app.updateHeader = function (heading) {
   $('header .hero h1').text(heading);
 };
