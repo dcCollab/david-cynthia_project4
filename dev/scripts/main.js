@@ -36,12 +36,6 @@ app.displayTeam = (teams) => {
   //Sort team alphabetically
   app.sortArrayObjects(teams);
 
-  // teams.sort(function (a, b) {
-  //   let alc = a.name.toLowerCase(),
-  //     blc = b.name.toLowerCase();
-  //   return alc > blc ? 1 : alc < blc ? -1 : 0;
-  // });
-
   teams.forEach((team) => {
     const teamContainer = $('<li>').addClass('team-container').attr('data-id', team.id).attr('data-team-name', team.name);
     const teamItem = $('<button>').addClass('team');
@@ -62,6 +56,7 @@ app.sortArrayObjects = (arrayObjects) => {
     return alc > blc ? 1 : alc < blc ? -1 : 0;
   });
 }
+
 app.addMobileMenuItems = (teams) => {
  app.sortArrayObjects(teams);
  
@@ -86,9 +81,6 @@ app.getTeamRoster = (id) => {
     method: 'GET',
     dataType: 'json',
   })
-  // .then((teamRoster) => {
-  //   app.displayTeamRoster(teamRoster.roster);
-  // })
 }
 
 app.getGameData = () => {
@@ -107,7 +99,6 @@ app.getGameData = () => {
 }
 
 app.aggregateGameData = (data) => {
-  
   data = data._embedded.events;
 
   data.forEach((data) => {
@@ -144,12 +135,12 @@ async function getRosterAndGameData(id) {
 // hide team names
 
 app.displayTeamRoster = (roster) => {
-  //Sorting the roster by alphabetical order;
   $('.chosen-team-page').removeClass('hide');
   $('.games-container').empty();
   $('.roster-list').empty();
   $('.nav-menu').hide();
   
+  //Sorting the roster by alphabetical order;
   roster.sort(function (a, b) {
     let alc = a.person.fullName.toLowerCase(),
       blc = b.person.fullName.toLowerCase();
@@ -226,11 +217,6 @@ app.displayPlayerStats = (player) => {
   $(playerSeasonStatContainer).append(playerSeason,playerAssists, playerGoals, playerPoints, playerGames, playerGameWinningGoals, playerPlusMinus);
   
   $(`#${app.playerID}`).append(playerSeasonStatContainer);
-
-  // if ($('.season-stats').data('season') === 20172018) {
-  //   $('.seaon-stats:nth-child(1)').append('<div>2017 2018</div>');
-  // };
-
 }
 
 app.accordion = () => {
@@ -284,14 +270,17 @@ app.mobileNavToggle = () => {
   })
 }
 
+app.changeNavIcon = () => {
+  $('.nav-menu').on('click', '.team-container', function () {
+    $('.menu-icon').toggleClass('open');
+  })
+}
+
 app.events = () => {
   app.getTeamID();
   app.getPlayerID();
   app.mobileNavToggle();
-
-  $('.nav-menu').on('click', '.team-container', function() {
-    $('.menu-icon').toggleClass('open');
-  })
+  app.changeNavIcon();
 };
 
 app.init = () => {
