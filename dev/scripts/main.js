@@ -9,7 +9,6 @@ app.seasons = ['20172018', '20162017','20152016' ];
 app.alphabeticalRoster = [];
 app.chosenTeamName;
 app.currentSeason = '';
-app.seasonYear;
 
 app.ticketmasterApiURL = 'https://app.ticketmaster.com/discovery/v2/events.json';
 app.ticketmasterApiKey = 'AabmVbCHA2zPjQoA1lb98cN1NQyuFGF4';
@@ -201,7 +200,7 @@ app.displayGoalieStats = (player) => {
   // if goalie display: savePercentage, wins, goalsAgainstAverage, games played, shutouts
   console.log(player)
   const playerSeasonStatContainer = $('<div>').addClass('season-stats').attr('data-season', app.currentSeason); 
-  const playerSeason = $('<p>').text(app.currentSeason);
+  const playerSeason = $('<p>').addClass('player-season').text(app.currentSeason);
   const playerSavePercentage = $('<p>').text(`Save Percentage: ${player.savePercentage}`);
   const playerWins = $('<p>').text(`Wins: ${player.wins}`);
   const playerGoalsAgainstAverage = $('<p>').text(`Goals Against Average: ${player.goalAgainstAverage}`);
@@ -261,7 +260,6 @@ app.getTeamID = () => {
     app.chosenTeamName = $(this).data('team-name');
     // app.getTeamRoster(id);
     getRosterAndGameData(teamID);
-    $('.menu-icon').toggleClass('open');
     // app.getGameData();
   })
 }
@@ -290,6 +288,10 @@ app.events = () => {
   app.getTeamID();
   app.getPlayerID();
   app.mobileNavToggle();
+
+  $('.nav-menu').on('click', '.team-container', function() {
+    $('.menu-icon').toggleClass('open');
+  })
 };
 
 app.init = () => {

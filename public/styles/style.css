@@ -428,6 +428,7 @@ nav {
   flex-wrap: wrap;
   display: none;
   flex: 1 0 100%;
+  align-items: flex-end;
   transition: all 300ms ease; }
   .game-link:hover .buy-now {
     background-color: #fff;
