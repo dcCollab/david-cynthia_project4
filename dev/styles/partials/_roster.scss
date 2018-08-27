@@ -3,7 +3,8 @@
   flex-wrap: wrap;
   & .player-info {
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
+    flex-wrap: wrap;
     flex: 0 0 100%;
     transition: all 300ms ease-in;
     border: .1px solid $silver;
@@ -33,6 +34,7 @@
     & .accordion-content-container {
       display: flex;
       flex-wrap: wrap;
+      flex: 1 0 100%;
     }
     & .season-stats {
       flex: 1 0 calc(100% - 10px);

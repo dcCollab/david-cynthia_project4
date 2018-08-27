@@ -6,7 +6,7 @@
 
 .teams {
   background-color: #fff;
-  flex: 0 0 90%;
+  flex: 0 0 98%;
   margin-top: -5rem;
   padding: 1rem;
   & ul {
@@ -20,9 +20,10 @@
   align-items: center;
   display: flex;
   transition: all 300ms ease-in;
-  padding: 1rem .5rem 1rem 1rem;
+  padding: 1rem 0;
   @media (min-width: $tablet) {
     flex-basis: 33%;
+    padding: 1rem .5rem 1rem 1rem;
   }
   @media (min-width: $desktop) {
     flex-basis: 25%;
